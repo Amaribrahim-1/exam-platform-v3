@@ -41,18 +41,30 @@ registerForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ==== SAVE USER IN FIRESTORE ====
-    await setDoc(doc(db, "users", user.uid), {
+    // ===== BASE USER DATA =====
+    const userData = {
       id: user.uid,
       name: nameValue,
       email: emailValue,
       role: roleValue,
       createdAt: serverTimestamp(),
-    });
+    };
+
+    // ===== EXTRA FIELDS ONLY FOR TEACHER =====
+    if (roleValue === "teacher") {
+      userData.profileCompleted = false;
+      userData.subject = "";
+      userData.bio = "";
+      userData.experience = "";
+      userData.photoURL = "";
+    }
+
+    // ==== SAVE USER IN FIRESTORE ====
+    await setDoc(doc(db, "users", user.uid), userData);
 
     // ==== REDIRECT AFTER REGISTER ====
     if (roleValue === "teacher") {
-      window.location.href = "./teacher-home.html";
+      window.location.href = "./teacher-profile-setup.html";
     } else {
       window.location.href = "./student-home.html";
     }
