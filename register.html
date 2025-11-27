@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+
+  <div class="auth-container">
+
+    <h2 class="auth-title">Create Account</h2>
+
+    <p class="auth-error" id="error-text"></p>
+
+    <form id="register-form" class="auth-form">
+
+      <!-- NAME -->
+      <div class="auth-field">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name" />
+      </div>
+
+      <!-- EMAIL -->
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password" />
+      </div>
+
+      <!-- ROLE -->
+      <div class="auth-field">
+        <label>Account Type</label>
+        <select id="role">
+          <option value="">Choose your role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+      </div>
+
+      <!-- TEACHER CODE -->
+      <div class="auth-field" id="teacher-code-box" style="display:none;">
+        <label>Teacher Code</label>
+        <input type="text" id="teacher-code" placeholder="Enter teacher code" />
+      </div>
+
+      <button class="auth-btn" type="submit">Register</button>
+
+      <p class="switch-text">
+        Already have an account?
+        <a href="./index.html">Login</a>
+      </p>
+
+    </form>
+
+  </div>
+
+  <script type="module" src="./js/pages/register.js"></script>
+</body>
+
+</html>

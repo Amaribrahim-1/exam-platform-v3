@@ -1,0 +1,101 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0f0f17;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ===== AUTH CONTAINER ===== */
+.auth-container {
+    background: #161624;
+    width: 380px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #29abe2;
+    letter-spacing: 1px;
+}
+
+/* ===== FORM ===== */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===== FIELDS ===== */
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.auth-field label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.auth-field input,
+.auth-field select {
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background: #1f1f2e;
+    color: white;
+    font-size: 14px;
+}
+
+/* ===== BUTTON ===== */
+.auth-btn {
+    background: #29abe2;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+    margin-top: 5px;
+}
+
+.auth-btn:hover {
+    background: #1d8cb9;
+}
+
+/* ===== ERROR TEXT ===== */
+.auth-error {
+    color: #ff5555;
+    text-align: center;
+    min-height: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* ===== SWITCH TEXT ===== */
+.switch-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.switch-text a {
+    color: #29abe2;
+    text-decoration: none;
+}
