@@ -1,0 +1,73 @@
+/* =============== GLOBAL RESET =============== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size: 16px;
+
+    /* Colors */
+    --color-primary: #0B5FFF;
+    --color-primary-dark: #0948CC;
+    --color-accent: #00C2A8;
+    --color-accent-dark: #009982;
+
+    --neutral-dark: #0F1724;
+    --neutral-mid: #596275;
+
+    --bg-surface: #F6F8FB;
+    --bg-muted: #F6F8FB;
+
+    --text-muted: #596275;
+
+    --alert-danger: #FF5A5A;
+    --alert-success: #00C2A8;
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+
+    /* Typography */
+    --text-h1: 36px;
+    --text-h2: 28px;
+    --text-h3: 20px;
+    --text-base: 16px;
+    --text-sm: 14px;
+    --text-xs: 12px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Borders */
+    --border: rgba(0, 0, 0, 0.1);
+}
+
+/* ================= DARK MODE ================= */
+.dark {
+    --bg-surface: #1a1f2e;
+    --bg-muted: #0F1724;
+
+    --neutral-dark: #e5e7eb;
+    --text-muted: #9ca3af;
+
+    --color-primary: #0B5FFF;
+    --color-primary-dark: #0B4AD8;
+
+    --border: #2A3041;
+}

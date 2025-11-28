@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/teacherNavbar.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/teacher-home.css" />
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="dashboard-wrapper">
+
+        <!-- ====== Heading ====== -->
+        <div class="dashboard-header">
+            <h2>Teacher Dashboard</h2>
+            <p>Manage your exams and track student progress</p>
+        </div>
+
+        <!-- ====== Stats Cards ====== -->
+        <div class="stats-container">
+
+            <div class="stat-card">
+                <div class="icon-box">📘</div>
+                <div>
+                    <h3 id="stat-total-exams">0</h3>
+                    <p>Total Exams</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon-box">👨‍🎓</div>
+                <div>
+                    <h3 id="stat-active-students">0</h3>
+                    <p>Active Students</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon-box">⏳</div>
+                <div>
+                    <h3 id="stat-upcoming">0</h3>
+                    <p>Upcoming</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon-box">📊</div>
+                <div>
+                    <h3 id="stat-attempts">0</h3>
+                    <p>Total Attempts</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ====== Exams Header ====== -->
+        <div class="exams-top">
+            <h3>My Exams</h3>
+            <button class="btn-primary" id="btnNewExam">+ Create New Exam</button>
+        </div>
+
+        <!-- ====== Exams Table ====== -->
+        <div class="exams-table" id="examsTable">
+
+            <!-- Table header (desktop only) -->
+            <div class="table-header">
+                <span>Exam Title</span>
+                <span>Questions</span>
+                <span>Duration</span>
+                <span>Difficulty</span>
+                <span>Status</span>
+                <span>Attempts</span>
+                <span>Actions</span>
+            </div>
+
+            <!-- Rows injected by JS -->
+
+        </div>
+
+    </div>
+
+    <!-- ============= MOBILE MODAL ============= -->
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Exam Details</h3>
+            <div id="modalContent"></div>
+            <button id="closeModal" class="close-modal-btn">Close</button>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script type="module" src="./js/components/navbar-teacher.js"></script>
+    <script type="module" src="./js/components/footer.js"></script>
+    <script type="module" src="./js/pages/teacher-home.js"></script>
+
+</body>
+
+</html>

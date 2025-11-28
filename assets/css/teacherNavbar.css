@@ -1,0 +1,185 @@
+/* =================== NAVBAR (Teacher) ==================== */
+
+.navbar {
+    background: var(--bg-surface);
+    padding: 16px 0;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+}
+
+.nav-container {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Logo */
+.nav-logo a {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Links */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--neutral-mid);
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* User menu */
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    object-fit: cover;
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: var(--bg-surface);
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+}
+
+.dropdown.hidden {
+    display: none;
+}
+
+.dropdown-title {
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    border-bottom: 1px solid var(--border);
+}
+
+.dropdown a,
+.dropdown button {
+    text-align: left;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    color: var(--neutral-mid);
+    text-decoration: none;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+    background: var(--bg-muted);
+}
+
+.logout-btn {
+    color: var(--alert-danger) !important;
+}
+
+/* Burger icon */
+.nav-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* ============ RESPONSIVE NAVBAR ============ */
+
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+/* ============= SIDEBAR FOR TEACHER ============= */
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    z-index: 90;
+}
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    max-width: 350px;
+    background: var(--bg-surface);
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    transition: right .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* Sidebar links */
+.sidebar a {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--neutral-dark);
+}
+
+.sidebar a:hover {
+    color: var(--color-primary);
+}

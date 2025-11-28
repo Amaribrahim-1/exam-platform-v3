@@ -1,4 +1,3 @@
-// login.js scriptimport { loginUser } from "../auth.js";
 import { db } from "../firebase.js";
 import { doc, getDoc } from "firebase/firestore";
 import { loginUser } from "../auth.js";

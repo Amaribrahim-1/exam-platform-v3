@@ -1,0 +1,462 @@
+body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    background: var(--bg-muted);
+    color: var(--neutral-dark);
+    line-height: 1.6;
+}
+
+/* ============ PAGE WRAPPER ============ */
+
+.exam-page {
+    max-width: 1150px;
+    margin: 30px auto 60px;
+    padding: 0 16px 40px;
+}
+
+/* Header */
+
+.exam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.exam-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.exam-header p {
+    color: var(--text-muted);
+    max-width: 520px;
+}
+
+/* ============ STEPPER ============ */
+
+.stepper {
+    display: flex;
+    gap: 24px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    opacity: 0.7;
+}
+
+.step.active,
+.step.completed {
+    opacity: 1;
+}
+
+.step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f9fafb;
+    color: var(--neutral-dark);
+    transition: 0.2s;
+}
+
+.step.active .step-circle {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.step.completed .step-circle {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: #fff;
+}
+
+.step-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.step-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.step-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ============ PANELS WRAPPER ============ */
+
+.steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* panel */
+
+.step-panel {
+    display: none;
+}
+
+.step-panel.active {
+    display: block;
+}
+
+.panel-card {
+    background: var(--bg-surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 22px 22px 18px;
+}
+
+.panel-card h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.panel-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+/* 2-column grid في الريفيو */
+.panel-grid-2 {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr;
+    gap: 20px;
+}
+
+/* ============ FORM (STEP 1) ============ */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.req {
+    color: var(--alert-danger);
+}
+
+input,
+textarea,
+select {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    font-size: 14px;
+    background: #f9fafb;
+    outline: none;
+    transition: 0.15s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(11, 95, 255, 0.2);
+    background: #ffffff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+    width: 100%;
+}
+
+.error-text {
+    font-size: 12px;
+    color: var(--alert-danger);
+    min-height: 16px;
+}
+
+/* ============ BUTTONS ============ */
+
+.btn-primary,
+.btn-ghost,
+.btn-outline {
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.18s;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--neutral-mid);
+}
+
+.btn-ghost:hover {
+    background: rgba(15, 23, 36, 0.04);
+}
+
+.btn-outline {
+    background: #f3f4ff;
+    color: var(--color-primary);
+    border-radius: 999px;
+}
+
+.btn-outline:hover {
+    background: #e2e7ff;
+}
+
+/* panel footer */
+
+.panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.panel-footer.between {
+    justify-content: space-between;
+}
+
+/* ============ STEP 2: QUESTIONS ============ */
+
+.panel-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+/* Question card */
+
+.question-card {
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 14px 14px 10px;
+    background: #f9fafb;
+}
+
+.question-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.question-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.question-index-pill {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #e5edff;
+    color: var(--color-primary);
+}
+
+.question-input {
+    margin-bottom: 10px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+    margin-bottom: 10px;
+}
+
+.option-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.correct-select-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+.correct-select-row select {
+    max-width: 140px;
+}
+
+.question-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+.remove-question-btn {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--alert-danger);
+    cursor: pointer;
+}
+
+/* ============ STEP 3: REVIEW ============ */
+
+.summary-block {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+}
+
+.summary-list {
+    list-style: none;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.summary-list strong {
+    font-weight: 600;
+}
+
+.summary-desc {
+    margin-top: 10px;
+}
+
+.summary-desc h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.summary-desc p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Questions summary */
+
+.summary-questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.summary-question-item {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    background: #f9fafb;
+}
+
+.summary-question-item h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.summary-options {
+    padding-left: 18px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.summary-options li {
+    font-size: 13px;
+}
+
+.summary-correct {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 900px) {
+    .exam-header {
+        flex-direction: column;
+    }
+
+    .panel-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .stepper {
+        flex-direction: column;
+    }
+
+    .panel-card {
+        padding: 18px 14px 14px;
+    }
+
+    .exam-page {
+        margin-top: 20px;
+    }
+}

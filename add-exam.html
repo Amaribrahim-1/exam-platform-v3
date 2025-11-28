@@ -1,15 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
+  <title>Add New Exam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exam Platform</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Global navbar/footer styles لو عندك -->
+
+  <link rel="stylesheet" href="./assets/css/global.css" />
+  <link rel="stylesheet" href="./assets/css/teacherNavbar.css" />
+  <link rel="stylesheet" href="./assets/css/teacher-create-exam.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
 </head>
+
 <body>
+  <!-- NAVBAR (تيتشر) -->
+  <div id="navbar"></div>
 
-  <div id="app"></div>
+  <main class="exam-page">
+    <!-- Page Header -->
+    <header class="exam-header">
+      <div>
+        <h1>Create New Exam</h1>
+        <p>
+          Set up your exam details, add questions, then review everything
+          before publishing.
+        </p>
+      </div>
+    </header>
 
+    <!-- Stepper -->
+    <section class="stepper">
+      <div class="step active" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-text">
+          <span class="step-title">Exam Info</span>
+          <span class="step-subtitle">Basic exam details</span>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-text">
+          <span class="step-title">Questions</span>
+          <span class="step-subtitle">Add questions & answers</span>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-text">
+          <span class="step-title">Review & Publish</span>
+          <span class="step-subtitle">Check everything</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panels Wrapper -->
+    <section class="steps-wrapper">
+      <!-- ========== STEP 1: EXAM INFO ========== -->
+      <section class="step-panel active" data-step="1">
+        <div class="panel-card">
+          <h2>Exam information</h2>
+          <p class="panel-desc">
+            Add the main details for your exam. You can edit them later.
+          </p>
+
+          <form id="exam-info-form" class="form-grid">
+            <div class="form-group">
+              <label for="exam-title">Exam Title <span class="req">*</span></label>
+              <input type="text" id="exam-title" placeholder="Midterm Algebra Exam" required />
+              <small class="error-text" data-error-for="exam-title"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="exam-subject">Subject <span class="req">*</span></label>
+              <input type="text" id="exam-subject" placeholder="Algebra / Math / Physics..." required />
+              <small class="error-text" data-error-for="exam-subject"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="exam-grade">Grade / Level</label>
+              <input type="text" id="exam-grade" placeholder="Grade 10, First year college..." />
+            </div>
+
+            <div class="form-group">
+              <label>Difficulty</label>
+              <select id="exam-difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+              <span class="error" data-error-for="exam-difficulty"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="exam-duration">Duration (minutes) <span class="req">*</span></label>
+              <input type="number" id="exam-duration" min="1" placeholder="60" required />
+              <small class="error-text" data-error-for="exam-duration"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="exam-marks">Total Marks <span class="req">*</span></label>
+              <input type="number" id="exam-marks" min="1" placeholder="100" required />
+              <small class="error-text" data-error-for="exam-marks"></small>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="exam-description">Description</label>
+              <textarea id="exam-description" rows="3"
+                placeholder="Write a short description for your students..."></textarea>
+            </div>
+          </form>
+
+          <div class="panel-footer">
+            <button id="step1-next" class="btn-primary">
+              Next: Questions
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== STEP 2: QUESTIONS ========== -->
+      <section class="step-panel" data-step="2">
+        <div class="panel-card">
+          <div class="panel-head-row">
+            <div>
+              <h2>Questions</h2>
+              <p class="panel-desc">
+                Add questions, 4 options for each one, and mark the correct answer.
+              </p>
+            </div>
+            <button id="add-question-btn" class="btn-outline">
+              + Add Question
+            </button>
+          </div>
+
+          <div id="questions-container" class="questions-list">
+            <!-- Question cards هتتعمل من الـ JS -->
+          </div>
+
+          <div class="panel-footer between">
+            <button id="step2-back" class="btn-ghost">
+              ← Back to exam info
+            </button>
+            <button id="step2-next" class="btn-primary">
+              Next: Review
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== STEP 3: REVIEW & PUBLISH ========== -->
+      <section class="step-panel" data-step="3">
+        <div class="panel-grid-2">
+          <!-- Left: summary -->
+          <div class="panel-card">
+            <h2>Review exam</h2>
+            <p class="panel-desc">
+              Make sure everything looks correct before publishing.
+            </p>
+
+            <div class="summary-block">
+              <h3>Exam details</h3>
+              <ul class="summary-list">
+                <li><strong>Title:</strong> <span id="summary-title">—</span></li>
+                <li><strong>Subject:</strong> <span id="summary-subject">—</span></li>
+                <li><strong>Grade / Level:</strong> <span id="summary-grade">—</span></li>
+                <li><strong>Duration:</strong> <span id="summary-duration">—</span></li>
+                <li><strong>Total Marks:</strong> <span id="summary-marks">—</span></li>
+              </ul>
+
+              <div class="summary-desc">
+                <h4>Description</h4>
+                <p id="summary-description">No description added.</p>
+              </div>
+            </div>
+
+            <div class="summary-block">
+              <h3>Questions overview</h3>
+              <p>
+                Total questions: <strong id="summary-questions-count">0</strong>
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: questions list -->
+          <div class="panel-card">
+            <h2>Questions</h2>
+            <div id="summary-questions" class="summary-questions-list">
+              <!-- Filled from JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer between">
+          <button id="step3-back" class="btn-ghost">
+            ← Back to questions
+          </button>
+          <button id="publish-exam-btn" class="btn-primary">
+            Publish exam
+          </button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Components (لو أنت عاملهم) -->
+  <script type="module" src="./js/components/navbar-teacher.js"></script>
+  <script type="module" src="./js/components/footer.js"></script>
+
+  <!-- Page logic -->
   <script type="module" src="./js/pages/add-exam.js"></script>
 </body>
+
 </html>

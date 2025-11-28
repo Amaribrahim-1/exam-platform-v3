@@ -24,10 +24,10 @@ const navbarHTML = `
         <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
         <button class="btn-register" onclick="window.location.href='register.html'">Register</button>
       </div>
-
+  
       <!-- User Avatar -->
       <div id="userMenu" class="user-menu">
-        <img id="userAvatar" class="user-avatar" src="./assets/imgs/no-profile-photo.webp">
+        <img id="userAvatar" class="user-avatar" src="./assets/img/no-profile-photo.webp">
 
         <div id="dropdownMenu" class="dropdown hidden">
           <p class="dropdown-title">Student Account</p>
