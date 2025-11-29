@@ -6,16 +6,19 @@ const navbarHTML = `
 <header class="navbar">
   <div class="nav-container">
 
-    <div class="nav-logo">
-      <span>Exam Platform</span>
+    <div class="nav-logo" onclick="location.href='student-home.html'">
+      <span>ExamPro</span>
     </div>
 
     <nav class="nav-links">
       <a href="student-home.html">Home</a>
-      <a href="exams.html">Exams</a>
-      <a href="teachers.html">Teachers</a>
-      <a href="profile.html">Profile</a>
+      <a href="my-exams.html">My Exams</a>
+      <a href="about-student.html">About</a>
+      <a href="contact-student.html">Contact</a>
     </nav>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">🌙</button>
 
     <div class="nav-right">
 
@@ -27,11 +30,10 @@ const navbarHTML = `
   
       <!-- User Avatar -->
       <div id="userMenu" class="user-menu">
-        <img id="userAvatar" class="user-avatar" src="./assets/img/no-profile-photo.webp">
+        <img id="userAvatar" class="user-avatar" src="../../assets/img/student-avatar.png">
 
         <div id="dropdownMenu" class="dropdown hidden">
           <p class="dropdown-title">Student Account</p>
-          <a href="profile.html">Profile</a>
           <a href="my-exams.html">My Exams</a>
           <button id="logoutBtn" class="logout-btn">Logout</button>
         </div>
@@ -138,9 +140,31 @@ onAuthStateChanged(auth, (user) => {
 
 // ============= LOGOUT =============
 document.getElementById("logoutBtn")?.addEventListener("click", () => {
-  signOut(auth).then(() => window.location.reload());
+  signOut(auth).then(() => (window.location.href = "login.html"));
 });
 
 document.getElementById("sidebarLogout")?.addEventListener("click", () => {
-  signOut(auth).then(() => window.location.reload());
+  signOut(auth).then(() => (window.location.href = "login.html"));
+});
+
+// ============= THEME LOGIC =============
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+
+  const btn = document.getElementById("themeToggle");
+  if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
+}
+
+function initTheme() {
+  const saved = localStorage.getItem("theme") || "light";
+  applyTheme(saved);
+}
+
+initTheme();
+
+document.getElementById("themeToggle")?.addEventListener("click", () => {
+  const current = localStorage.getItem("theme") || "light";
+  const newTheme = current === "light" ? "dark" : "light";
+  applyTheme(newTheme);
 });

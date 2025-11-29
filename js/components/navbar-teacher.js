@@ -1,46 +1,40 @@
-// ========== TEACHER NAVBAR (Injected) ==========
+/* ===================== NAVBAR (Injected) ===================== */
 
 const navbar = `
 <nav class="navbar">
   <div class="nav-container">
 
-    <!-- Logo -->
     <div class="nav-logo">
       <a href="./teacher-home.html">ExamPro</a>
     </div>
 
-    <!-- Links -->
     <div class="nav-links">
       <a href="./teacher-home.html">Dashboard</a>
-      <a href="./teacher-exams.html">My Exams</a>
-      <a href="./teacher-students.html">Students</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
+      <a href="./about-teacher.html">About</a>
+      <a href="./contact-teacher.html">Contact</a>
     </div>
 
-    <!-- User Menu -->
+    <button id="themeToggle" class="theme-toggle-btn">🌙</button>
+
     <div class="user-menu" id="userMenu">
-      <img id="teacherAvatar" class="user-avatar" src="../../assets/img/no-profile-photo.webp" />
+      <img id="teacherAvatar" class="user-avatar" src="../../assets/img/teacher-avatar.png" />
+
       <div class="dropdown hidden" id="userDropdown">
         <div class="dropdown-title">Teacher Account</div>
-
-        <a href="./teacher-profile.html">Profile</a>
-        <a href="./teacher-exams.html">My Exams</a>
-
-        <button class="logout-btn" id="logoutBtn">Logout</button>
+        <a href="./teacher-home.html">My Exams</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
       </div>
     </div>
 
-    <!-- Mobile icon -->
     <div class="nav-toggle" id="navToggle">☰</div>
 
   </div>
 </nav>
 
-<!-- Sidebar -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <div class="sidebar" id="sidebarMenu">
+
   <div class="sidebar-header">
     <h3>Menu</h3>
     <span class="close-btn" id="sidebarClose">✖</span>
@@ -49,8 +43,8 @@ const navbar = `
   <a href="./teacher-home.html">Dashboard</a>
   <a href="./teacher-exams.html">My Exams</a>
   <a href="./teacher-students.html">Students</a>
-  <a href="./about.html">About</a>
-  <a href="./contact.html">Contact</a>
+  <a href="./about-teacher.html">About</a>
+  <a href="./contact-teacher.html">Contact</a>
 
   <hr />
 
@@ -60,37 +54,68 @@ const navbar = `
 
 document.getElementById("navbar").innerHTML = navbar;
 
-// ========== INTERACTIVITY ==========
+/* ===================== THEME LOGIC ===================== */
 
-// Sidebar
-const toggle = document.getElementById("navToggle");
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+
+  const btn = document.getElementById("themeToggle");
+  btn.textContent = theme === "dark" ? "☀️" : "🌙";
+}
+
+applyTheme(localStorage.getItem("theme") || "light");
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+  const current = localStorage.getItem("theme") || "light";
+  applyTheme(current === "light" ? "dark" : "light");
+});
+
+/* ===================== SIDEBAR ===================== */
+
 const sidebar = document.getElementById("sidebarMenu");
 const overlay = document.getElementById("sidebarOverlay");
-const sidebarClose = document.getElementById("sidebarClose");
 
-toggle.onclick = () => {
+document.getElementById("navToggle").addEventListener("click", () => {
   sidebar.classList.add("open");
   overlay.classList.add("show");
-};
-sidebarClose.onclick = () => {
-  sidebar.classList.remove("open");
-  overlay.classList.remove("show");
-};
-overlay.onclick = () => {
-  sidebar.classList.remove("open");
-  overlay.classList.remove("show");
-};
+});
 
-// Dropdown
+document.getElementById("sidebarClose").addEventListener("click", closeSidebar);
+overlay.addEventListener("click", closeSidebar);
+
+function closeSidebar() {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+}
+
+/* -------------------- DROPDOWN (FIXED) -------------------- */
 const userMenu = document.getElementById("userMenu");
 const userDropdown = document.getElementById("userDropdown");
 
-userMenu.onclick = () => {
-  userDropdown.classList.toggle("hidden");
-};
+userMenu?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userDropdown.classList.toggle("show");
+});
 
-// Logout (Firebase)
-import { logoutUser } from "../auth.js";
+document.addEventListener("click", () => {
+  userDropdown.classList.remove("show");
+});
 
-document.getElementById("logoutBtn").onclick = logoutUser;
-document.getElementById("sideLogout").onclick = logoutUser;
+userDropdown?.addEventListener("click", (e) => e.stopPropagation());
+
+/* ===================== LOGOUT ===================== */
+
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.js";
+
+function logoutNow() {
+  signOut(auth)
+    .then(() => (window.location.href = "./login.html"))
+    .catch((e) => console.error(e));
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("logoutBtn")?.addEventListener("click", logoutNow);
+  document.getElementById("sideLogout")?.addEventListener("click", logoutNow);
+});

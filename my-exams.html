@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Exams</title>
+
+  <link rel="stylesheet" href="./assets/css/global.css" />
+  <link rel="stylesheet" href="./assets/css/studentNavbar.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/student-my-exams.css" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <main class="myexams-wrapper">
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="myexams-header">
+      <div>
+        <h1>My Exams</h1>
+        <p>Track your solved exams and check your scores.</p>
+      </div>
+    </header>
+
+    <!-- ===== STATS CARDS ===== -->
+    <section class="myexams-stats">
+      <div class="stat-card">
+        <div class="icon-box">📝</div>
+        <div>
+          <h3 id="stat-total-attempts">0</h3>
+          <p>Total Exams Taken</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon-box">⭐</div>
+        <div>
+          <h3 id="stat-avg-score">0%</h3>
+          <p>Average Percentage</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon-box">🏅</div>
+        <div>
+          <h3 id="stat-best-score">0%</h3>
+          <p>Best Result</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXAMS TABLE ===== -->
+    <section class="myexams-table-section">
+      <div class="table-header">
+        <span>Exam Title</span>
+        <span>Subject</span>
+        <span>Status</span>
+        <span>Score</span>
+        <span>Percentage</span>
+        <span>Date</span>
+      </div>
+
+      <div class="table-body" id="myExamsTable">
+        <!-- Rows injected by JS -->
+        <div class="empty-state">Loading your exams...</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <script type="module" src="./js/components/navbar-student.js"></script>
+  <script type="module" src="./js/components/footer.js"></script>
+  <script type="module" src="./js/pages/student-my-exams.js"></script>
+</body>
+
+</html>

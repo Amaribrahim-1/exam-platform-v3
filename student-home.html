@@ -1,68 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Home</title>
 
-    <link rel="stylesheet" href="./assets/css/global.css">
-    <link rel="stylesheet" href="./assets/css/studentNavbar.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/student-home.css" />
-
+  <link rel="stylesheet" href="./assets/css/global.css" />
+  <link rel="stylesheet" href="./assets/css/studentNavbar.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/student-home.css" />
 </head>
 
 <body>
+  <div id="navbar"></div>
 
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Master Your Exams with Expert Teachers</h1>
+      <p>
+        Access high-quality practice exams created by experienced educators.
+        Track your progress, identify weak areas, and achieve your academic
+        goals.
+      </p>
 
-    <div id="navbar"></div>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="location.href='#teachers'">Browse Exams</button>
+        <button class="btn-secondary" onclick="location.href='#teachers'">Learn More</button>
+      </div>
+    </div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Master Your Exams with Expert Teachers</h1>
-            <p>
-                Access high-quality practice exams created by experienced educators.
-                Track your progress, identify weak areas, and achieve your academic goals.
-            </p>
+    <div class="hero-image">
+      <img src="./assets/img/hero-img.jpg" alt="Student studying" />
+    </div>
+  </section>
 
-            <div class="hero-buttons">
-                <button class="btn-primary">Browse Exams</button>
-                <button class="btn-secondary">Learn More</button>
-            </div>
-        </div>
+  <!-- Search Section -->
+  <!-- <section class="search-area">
+    <input type="text" placeholder="Search by teacher name or subject..." class="search-input" />
 
-        <div class="hero-image">
-            <img src="./assets/img/hero-img.jpg" alt="Student studying" />
-        </div>
-    </section>
+    <select class="filter-select">
+      <option value="all">All</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Science</option>
+      <option value="english">English</option>
+      <option value="history">History</option>
+      <option value="computer">Computer Science</option>
+    </select>
+  </section> -->
 
-    <!-- Search Section -->
-    <section class="search-area">
-        <input type="text" placeholder="Search by teacher name or subject..." class="search-input" />
+  <!-- Teachers List -->
+  <section class="teachers" id="teachers"></section>
 
-        <select class="filter-select">
-            <option value="all">All</option>
-            <option value="math">Mathematics</option>
-            <option value="science">Science</option>
-            <option value="english">English</option>
-            <option value="history">History</option>
-            <option value="computer">Computer Science</option>
-        </select>
-    </section>
+  <div id="footer"></div>
+  <script type="module" src="./js/components/footer.js"></script>
+  <script type="module" src="./js/components/navbar-student.js"></script>
 
-    <!-- Teachers List -->
-    <section class="teachers">
-
-    </section>
-
-
-
-    <div id="footer"></div>
-    <script type="module" src="./js/components/footer.js"></script>
-    <script type="module" src="./js/components/navbar-student.js"></script>
-
-    <script type="module" src="./js/pages/student-home.js"></script>
+  <script type="module" src="./js/pages/student-home.js"></script>
 </body>
 
 </html>

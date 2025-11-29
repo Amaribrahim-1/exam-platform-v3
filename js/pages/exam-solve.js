@@ -1,1 +1,0 @@
-// exam-solve.js script

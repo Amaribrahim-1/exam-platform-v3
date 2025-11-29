@@ -19,8 +19,8 @@ const footerHTML = `
 
     <div class="footer-contact">
       <h4>Contact</h4>
-      <p>Email: support@examplatform.com</p>
-      <p>Phone: +20 123 456 7890</p>
+      <p>Email: ibrahimabdullaziz55@gmail.com</p>
+      <p>Phone: +20 1024642180</p>
     </div>
 
   </div>

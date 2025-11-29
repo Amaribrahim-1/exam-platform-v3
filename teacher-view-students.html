@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Submissions</title>
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/teacherNavbar.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+
+    <!-- التصميم الجديد اللي هنبنيه -->
+    <link rel="stylesheet" href="./assets/css/teacher-view-students.css" />
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="dashboard-wrapper">
+
+        <!-- ====== Heading ====== -->
+        <div class="dashboard-header">
+            <h2>Exam Submissions</h2>
+            <p>All students who submitted this exam</p>
+        </div>
+
+        <!-- ====== Exam Info Card ====== -->
+        <div class="exam-info-card">
+            <h3 id="examTitle">Exam Title</h3>
+
+            <div class="exam-info-grid">
+                <p><strong>Subject:</strong> <span id="examSubject"></span></p>
+                <p><strong>Total Marks:</strong> <span id="examMarks"></span></p>
+                <p><strong>Questions:</strong> <span id="examQuestions"></span></p>
+                <p><strong>Attempts:</strong> <span id="examAttempts"></span></p>
+            </div>
+        </div>
+
+        <!-- ===== Students Table ===== -->
+        <div class="students-table" id="studentsTable">
+            <div class="table-header">
+                <span>Student</span>
+                <span>Email</span>
+                <span>Score</span>
+                <span>%</span>
+                <span>Date</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+    <script type="module" src="./js/components/navbar-teacher.js"></script>
+    <script type="module" src="./js/components/footer.js"></script>
+    <script type="module" src="./js/pages/teacher-view-students.js"></script>
+
+</body>
+
+</html>

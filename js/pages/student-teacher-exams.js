@@ -1,91 +1,3 @@
-// import { db } from "../firebase.js";
-// import {
-//   doc,
-//   getDoc,
-//   collection,
-//   query,
-//   where,
-//   getDocs,
-// } from "firebase/firestore";
-
-// const teacherHeader = document.getElementById("teacherHeader");
-// const examsList = document.getElementById("examsList");
-
-// // ========== Read teacherId from URL ==========
-// const params = new URLSearchParams(window.location.search);
-// const teacherId = params.get("tid");
-
-// if (!teacherId) {
-//   examsList.innerHTML = `<p class="empty-msg">Invalid teacher ID</p>`;
-// }
-
-// // ===========================================
-// //       LOAD TEACHER DATA
-// // ===========================================
-// async function loadTeacher() {
-//   const ref = doc(db, "users", teacherId);
-//   const snap = await getDoc(ref);
-
-//   if (!snap.exists()) {
-//     teacherHeader.innerHTML = `<p class="empty-msg">Teacher not found</p>`;
-//     return;
-//   }
-
-//   const t = snap.data();
-
-//   teacherHeader.innerHTML = `
-//         <img src="${t.photoURL || "./assets/img/no-profile-photo.webp"}" />
-
-//         <div class="teacher-header-info">
-//             <h2>${t.name}</h2>
-//             <p>${t.subject} • ${t.experience || 0} yrs experience</p>
-//             <p>${t.bio || ""}</p>
-//         </div>
-//     `;
-// }
-
-// // ===========================================
-// //       LOAD EXAMS FOR THIS TEACHER
-// // ===========================================
-// async function loadExams() {
-//   const examsRef = collection(db, "exams");
-//   const q = query(examsRef, where("teacherId", "==", teacherId));
-//   const snapshot = await getDocs(q);
-
-//   if (snapshot.empty) {
-//     examsList.innerHTML = `<p class="empty-msg">No exams available</p>`;
-//     return;
-//   }
-
-//   examsList.innerHTML = "";
-
-//   snapshot.forEach((docSnap) => {
-//     const exam = docSnap.data();
-
-//     const card = document.createElement("div");
-//     card.className = "exam-card";
-
-//     card.innerHTML = `
-//             <h3 class="exam-title">${exam.title}</h3>
-//             <p class="exam-info">
-//                 Questions: ${exam.questionsCount} •
-//                 Duration: ${exam.duration} min •
-//                 Difficulty: ${exam.difficulty}
-//             </p>
-
-//             <button class="btn-start"
-//                 onclick="window.location.href='./exam-start.html?eid=${docSnap.id}'">
-//                 Start Exam
-//             </button>
-//         `;
-
-//     examsList.appendChild(card);
-//   });
-// }
-
-// loadTeacher();
-// loadExams();
-
 import { db } from "../firebase.js";
 import {
   doc,
@@ -122,13 +34,13 @@ async function loadTeacher() {
   const t = snap.data();
 
   teacherHeader.innerHTML = `
-        <img src="${t.photoURL || "./assets/img/no-profile-photo.webp"}" />
+        <img src="${t.photoURL || "../../assets/img/teacher-avatar.png"}" />
 
         <div class="teacher-header-info">
-            <h2>${t.name || "Unknown Teacher"}</h2>
+            <h2>${t.name || "Teacher"}</h2>
             <p>${t.subject || "No subject"} • ${
     t.experience || 0
-  } yrs experience</p>
+  } yrs experience ⭐</p>
             <p>${t.bio || ""}</p>
         </div>
     `;
